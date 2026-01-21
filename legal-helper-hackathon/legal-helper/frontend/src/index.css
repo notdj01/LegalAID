@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply antialiased;
+        background-color: #050505;
+    }
+}
+
+@layer utilities {
+    .glass-panel {
+        @apply bg-[#0f0f0f]/80 backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+    }
+
+    .glass-input {
+        @apply bg-[#0a0a0a] border border-white/10 focus:border-[#D4AF37]/50 focus:ring-2 focus:ring-[#D4AF37]/20 transition-all duration-300;
+    }
+
+    /* Premium text gradient */
+    .text-gradient-gold {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F5E6A3] to-[#D4AF37];
+    }
+
+    /* Glow effects */
+    .glow-gold {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.15), 0 0 40px rgba(212, 175, 55, 0.1);
+    }
+
+    .glow-gold-intense {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Animated border gradient */
+    .animated-border {
+        position: relative;
+    }
+
+    .animated-border::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        padding: 1px;
+        opacity: 0.5;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Selection */
+::selection {
+    background-color: #D4AF37;
+    color: #000;
+}
+
+/* Keyframes */
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: -200% 0;
+    }
+
+    50% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+        opacity: 1;
+    }
+
+    50% {
+        width: 100%;
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 0.3;
+    }
+}
+
+@keyframes scale-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation Classes */
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
